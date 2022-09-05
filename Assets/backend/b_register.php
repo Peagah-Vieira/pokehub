@@ -1,4 +1,5 @@
 <?php
+session_start();
 $username = 0;
 $email = 0;
 $password = 0;
