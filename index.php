@@ -33,9 +33,6 @@ include_once('assets/backend/b_index.php');
 							<a class="nav-link text-dark" href="register.php">Register</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" href="forgot.php">Login</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link text-dark" href="login.php">Account</a>
 						</li>
 					</ul>
@@ -52,7 +49,7 @@ include_once('assets/backend/b_index.php');
                         <form action="" method="GET">
                             <input type="text" id="search" name="search" class="form-control" placeholder="Type your pokemon Here">
                             <button type="submit" class="search-icon"><i class="ti-search" aria-hidden="true"></i></button>
-                        </form>     
+                        </form>
 					</div>
 				</div>
 			</div>
@@ -66,7 +63,6 @@ include_once('assets/backend/b_index.php');
 				</div>
 			</div>
             <?php
-			echo "<script>console.log('$_SESSION[username]');</script>";
 				if($number['num'] == 3) {
 					$i = 3;
 					while($i < 154){
@@ -135,7 +131,6 @@ include_once('assets/backend/b_index.php');
 	  } } } 
 	  else { 
 		?>
-        <strong>Nenhum pokemón retornado pela API</strong>
       <?php
 	   } 
 	  ?>
