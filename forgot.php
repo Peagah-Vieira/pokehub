@@ -9,14 +9,14 @@
     <link href="node_modules/toastr/build/toastr.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="node_modules/toastr/toastr.js"></script>
-    <link rel="icon" href="assets/img/pokebola.png" type="image/x-icon">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <title>PokeHub - Forgot Password</title>
 </head>
 
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="assets/img/background-login.jpg" alt="">
+        <img src="assets/img/forgot.gif">
         </div>
         <div class="form">
             <form action="#" method="POST">

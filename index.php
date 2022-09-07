@@ -9,14 +9,14 @@ include_once('assets/backend/b_index.php');
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugins/themify-icons/themify-icons.css">
-	<link rel="icon" href="assets/img/pokebola.png" type="image/x-icon">
+	<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-	<link href="assets/css/style.css" rel="stylesheet" media="screen" />
+	<link href="assets/css/index.css" rel="stylesheet" media="screen" />
 		<title>PokeHub - Index Page</title>
 </head>
 
 <body>
-	<header class="banner overlay bg-cover" data-background="assets/img/background.png">
+	<header class="baanner overlay bag-cover" data-background="assets/img/index.gif">
 		<nav class="navbar navbar-expand-md navbar-dark">
 			<div class="container">
 				<a class="navbar-brand px-2" href="index.php">PokeHub</a>
@@ -33,9 +33,6 @@ include_once('assets/backend/b_index.php');
 							<a class="nav-link text-dark" href="register.php">Register</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" href="forgot.php">Forgot</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link text-dark" href="login.php">Account</a>
 						</li>
 					</ul>
@@ -46,10 +43,13 @@ include_once('assets/backend/b_index.php');
 			<div class="row">
 				<div class="col-lg-8 text-center mx-auto">
 					<h1 class="text-white mb-3">Welcome to the PokeHub</h1>
+					<h2 class="text-white mb-3"><?=$_SESSION['username']?></h2>
 					<p class="text-white mb-4">Pokemon Register &amp; Pokemon Index</p>
 					<div class="position-relative">
-						<input type="search" id="search" class="form-control" placeholder="Type your pokemon Here" value=""><a><i
-							class="ti-search search-icon"></i></a>
+                        <form action="" method="GET">
+                            <input type="text" id="search" name="search" class="form-control" placeholder="Type your pokemon Here">
+                            <button type="submit" class="search-icon"><i class="ti-search" aria-hidden="true"></i></button>
+                        </form>
 					</div>
 				</div>
 			</div>
@@ -62,43 +62,78 @@ include_once('assets/backend/b_index.php');
 					<h2 class="section-title">Pokemon List</h2>
 				</div>
 			</div>
-			<?php
-				if(count($pokemons->pokemon)) {
-				$i = 0;
-				foreach($pokemons->pokemon as $Pokemon) {
-				$i++;
+            <?php
+				if($number['num'] == 3) {
+					$i = 3;
+					while($i < 154){
+                            $stm = $conn->query("SELECT num,name,img,next_evolution0name,next_evolution1name,weaknesses0,weaknesses1,weaknesses2 FROM pokemons WHERE num=$i");
+                            $pokemon = $stm->fetch(PDO::FETCH_ASSOC);
+						$i++;
 			?>
-			<?php if($i % 3 == 1) { ?>
+			<!-- Modal Ainda não Funcionando-->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"><?=$pokemon['name']?></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					</button>
+                    <span aria-hidden="true">&times;</span>
+				</div>
+				<div class="modal-body">
+				<img src="<?=$pokemon['img']?>" class="mx-auto d-block" alt="<?=$pokemon['name']?>">
+				</div>
+				<div class="modal-footer">
+                    <h5>Weaknesses:</h5>
+                    <h6><?=$pokemon['weaknesses0']?></h6>
+                    <h6><?=$pokemon['weaknesses1']?></h6>
+                    <h6><?=$pokemon['weaknesses2']?></h6>
+				</div>
+				</div>
+			</div>
+			</div>
+			<!-- Exit Modal -->
+			<?php 
+				if($i % 3 == 1){ 
+			?>
 			<div class="row">
-			<?php } ?>
+			<?php
+			 	} 
+			?>
 			<div class="row">
 				<div class="col-md-8 mr-3 mt-3">
-					<div class="card text-center pt-3" style="width: 22rem;">
-						<img src="<?=$Pokemon->img?>" class="mx-auto d-block" alt="<?=$Pokemon->name?>">
+					<div class="card text-center pt-3" data-toggle="modal" data-target="#exampleModal" style="width: 22rem;">
+						<img src="<?=$pokemon['img']?>" class="mx-auto d-block" alt="<?=$pokemon['name']?>">
 						<div class="card-body px-3">
-							<h5 class="card-title"><?=$Pokemon->name?></h5>
+							<h5 class="card-title"><?=$pokemon['name']?></h5>
 							<p>
 								<?php
-									if (empty($Pokemon->next_evolution)) {
-										echo "Não possui próximas evoluções ";
+									if ($pokemon['next_evolution0name'] == NULL) {
+										echo "Without Next Evolution ";
+									}
+									else if($pokemon['next_evolution1name'] == NULL){
+										echo "Next Evolution: $pokemon[next_evolution0name]";
 									}
 									else {
-										echo "Próximas evoluções: ";
-										foreach($Pokemon->next_evolution as $ProximaEvolucao) {
-											echo $ProximaEvolucao->name . " ";
-										}
-									}  
+										echo "Next Evolution: $pokemon[next_evolution0name] & $pokemon[next_evolution1name]";
+									}
 								?>
 							</p>
 						</div>
 					</div>
 				</div>
-		</div>
-		<?php if($i % 3 == 0) { ?>
+			</div>
+			<?php
+			 if($i % 3 == 0) { 
+				?>
       </div>
-      <?php } } } else { ?>
-        <strong>Nenhum pokemón retornado pela API</strong>
-      <?php } ?>
+      <?php 
+	  } } } 
+	  else { 
+		?>
+      <?php
+	   } 
+	  ?>
 	</section>
 	<footer class="section pb-4">
 		<div class="container">
