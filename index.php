@@ -70,29 +70,6 @@ include_once('assets/backend/b_index.php');
                             $pokemon = $stm->fetch(PDO::FETCH_ASSOC);
 						$i++;
 			?>
-			<!-- Modal Ainda não Funcionando-->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"><?=$pokemon['name']?></h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					</button>
-                    <span aria-hidden="true">&times;</span>
-				</div>
-				<div class="modal-body">
-				<img src="<?=$pokemon['img']?>" class="mx-auto d-block" alt="<?=$pokemon['name']?>">
-				</div>
-				<div class="modal-footer">
-                    <h5>Weaknesses:</h5>
-                    <h6><?=$pokemon['weaknesses0']?></h6>
-                    <h6><?=$pokemon['weaknesses1']?></h6>
-                    <h6><?=$pokemon['weaknesses2']?></h6>
-				</div>
-				</div>
-			</div>
-			</div>
-			<!-- Exit Modal -->
 			<?php 
 				if($i % 3 == 1){ 
 			?>
@@ -102,7 +79,7 @@ include_once('assets/backend/b_index.php');
 			?>
 			<div class="row">
 				<div class="col-md-8 mr-3 mt-3">
-					<div class="card text-center pt-3" data-toggle="modal" data-target="#exampleModal" style="width: 22rem;">
+					<div class="card text-center pt-3" style="width: 22rem;">
 						<img src="<?=$pokemon['img']?>" class="mx-auto d-block" alt="<?=$pokemon['name']?>">
 						<div class="card-body px-3">
 							<h5 class="card-title"><?=$pokemon['name']?></h5>
