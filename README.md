@@ -13,13 +13,23 @@
 
 <br>
 
+### Register GIF
 
-<h1 align="center">
-  <img alt="Pokehub" title="Register" src="/assets/img/pokebola.png" height="425" />
-  <img alt="Pokehub" title="Login" src="./github/WeatherAppThemePersistAndCityNotFound.gif" height="425" />
-  <img alt="Pokehub" title="Index" src="./github/WeatherAppThemePersistAndCityNotFound.gif" height="425" />
-</h1>
+<h2>
+  <img alt="Pokehub" title="Register" src="Assets/img/registergif.gif" height="425" />
+</h2>
 
+### Login GIF
+
+<h2>
+  <img alt="Pokehub" title="Register" src="Assets/img/registergif.gif" height="425" />
+</h2>
+
+### Index GIF
+
+<h2>
+  <img alt="Pokehub" title="Register" src="Assets/img/registergif.gif" height="425" />
+</h2>
 
 ### Features
 
