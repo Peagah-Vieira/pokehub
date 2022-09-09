@@ -16,19 +16,19 @@
 ### Register GIF
 
 <h2>
-  <img alt="Pokehub" title="Register" src="Assets/img/registergif.gif" height="425" />
+  <img alt="Pokehub" title="Register" src="Github/gitRegister.gif" height="425" />
 </h2>
 
 ### Login GIF
 
 <h2>
-  <img alt="Pokehub" title="Register" src="Assets/img/registergif.gif" height="425" />
+  <img alt="Pokehub" title="Register" src="Github/gitLogin.gif" height="425" />
 </h2>
 
 ### Index GIF
 
 <h2>
-  <img alt="Pokehub" title="Register" src="Assets/img/registergif.gif" height="425" />
+  <img alt="Pokehub" title="Register" src="Github/gitIndex.gif" height="425" />
 </h2>
 
 ### Features
